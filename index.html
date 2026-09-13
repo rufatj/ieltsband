@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BAND — IELTS practice analytics</title>
+<meta name="description" content="Turn your IELTS practice history into a dashboard. No account, no database: your own file is the data.">
+<meta name="theme-color" content="#08090A">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<!-- ============================ ONBOARDING ============================ -->
+<div class="gate" id="gate" style="display:none">
+  <div class="gate-inner">
+    <div class="gate-mark"><img src="assets/logo.png" alt=""></div>
+    <div class="gate-progress"><i class="done"></i><i></i><i></i></div>
+
+    <!-- 1. name -->
+    <section class="gate-step on">
+      <h1>Your IELTS practice,<br>finally in one place.</h1>
+      <p class="lede">Every test you have taken, scored, timed, compared and picked apart. Nothing is stored on a server — your own file is the database.</p>
+      <div class="field">
+        <label>What should this call you?</label>
+        <input class="inp" data-gname placeholder="Your name" autocomplete="given-name">
+      </div>
+      <div class="btn-row">
+        <button class="btn" data-gname-go>Continue</button>
+      </div>
+    </section>
+
+    <!-- 2. api key -->
+    <section class="gate-step">
+      <h1>Add an assistant,<br>or skip it.</h1>
+      <p class="lede">A key unlocks essay marking, error diagnosis and test suggestions. Charts, tables and answer review all work without one.</p>
+      <div class="field">
+        <label>Provider <button class="qmark" data-gkey-help type="button" aria-label="Why is this needed">?</button></label>
+        <select class="sel" data-gprov></select>
+        <div class="hint" data-ghint></div>
+      </div>
+      <div class="field">
+        <label>API key</label>
+        <input class="inp" type="password" data-gkey placeholder="Paste it here" autocomplete="off">
+        <div class="hint">Saved in this browser only. Requests go straight from your device to the provider.</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn" data-gkey-go>Save and continue</button>
+        <button class="btn quiet" data-gkey-skip>Skip for now</button>
+        <div style="margin-left:auto"></div>
+        <button class="btn quiet" data-gkey-back>Back</button>
+      </div>
+    </section>
+
+    <!-- 3. data file -->
+    <section class="gate-step">
+      <h1>Load your file.</h1>
+      <p class="lede">A plain text file with one test per line, or a spreadsheet exported as CSV. Never made one? Open the guide, or look around with the sample first.</p>
+      <div class="drop" data-gdrop>
+        <div class="drop-ico"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 19V8M7 12l5-5 5 5"/><path d="M4 21h16"/></svg></div>
+        <strong>Drop your file here</strong>
+        <span>.txt · .jsonl · .csv · .tsv · .xlsx</span>
+      </div>
+      <input type="file" data-gfile accept=".txt,.jsonl,.json,.csv,.tsv,.xlsx,.xls" style="display:none">
+      <div data-gerr></div>
+      <div class="btn-row">
+        <button class="btn ghost" data-gfile-help>How do I make one?</button>
+        <button class="btn quiet" data-gfile-sample>Try the sample</button>
+        <div style="margin-left:auto"></div>
+        <button class="btn quiet" data-gfile-back>Back</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============================ LOADING ============================ -->
+<div class="boot" id="boot" style="display:none">
+  <div class="boot-in">
+    <div class="boot-mark"><img src="assets/logo.png" alt=""></div>
+    <div class="boot-bar"><i></i></div>
+    <div class="boot-msg">Reading your file</div>
+  </div>
+</div>
+
+<!-- ============================ APP ============================ -->
+<div id="app" class="app">
+
+  <aside class="rail">
+    <div class="rail-top">
+      <div class="rail-logo"><img src="assets/logo.png" alt=""></div>
+      <div class="rail-word">BAND<small>IELTS ANALYTICS</small></div>
+    </div>
+    <nav class="rail-scroll" id="rail-scroll"></nav>
+    <div class="rail-foot">
+      <button class="rail-toggle" id="rail-toggle">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16"/><path d="M10 4v16"/></svg>
+        <span class="navi-txt">Collapse</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="head">
+      <h1 id="head-title">Overview</h1>
+      <span class="head-sub" id="head-sub"></span>
+      <div class="head-right">
+        <button class="icobtn" data-theme-btn aria-label="Switch theme"></button>
+        <button class="mark-btn" data-mark aria-label="Contact Rufat"><img src="assets/logo.png" alt=""></button>
+      </div>
+    </header>
+    <main class="page" id="page"></main>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+<script src="assets/core.js"></script>
+<script src="assets/ui.js"></script>
+<script src="assets/charts.js"></script>
+<script src="assets/ai.js"></script>
+<script src="assets/views.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
