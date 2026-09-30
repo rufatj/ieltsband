@@ -13,7 +13,7 @@ Built by [Rufat Jabrayilli](https://github.com/rufatj).
 
 ## Deploy
 
-No build step. No dependencies to install.
+No build step. No dependencies to install.    
 
 **Netlify** — drag this whole folder onto [app.netlify.com/drop](https://app.netlify.com/drop). Done.
 
